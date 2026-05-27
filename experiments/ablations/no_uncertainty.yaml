@@ -1,0 +1,8 @@
+# Ablation: single forward pass, point predictions only. Used to measure
+# the calibration / robustness cost of removing MC-dropout uncertainty.
+base: "configs/default.yaml"
+experiment: "ablation_no_uncertainty"
+overrides:
+  uncertainty:
+    type: "none"
+    n_samples: 1

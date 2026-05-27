@@ -1,0 +1,8 @@
+# Ablation: remove within-person baseline conditioning. The encoder must
+# infer latent state from absolute values only, not deviations from baseline.
+base: "configs/default.yaml"
+experiment: "ablation_no_personal_baseline"
+overrides:
+  encoder:
+    modality_dims:
+      baseline: 0

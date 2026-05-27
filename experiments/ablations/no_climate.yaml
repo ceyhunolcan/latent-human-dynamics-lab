@@ -1,0 +1,11 @@
+# Ablation: remove climate modality from encoder input AND environmental forcing
+# from the dynamics. Used to quantify how much of the model's predictive power
+# comes from climate-physiology coupling.
+base: "configs/default.yaml"
+experiment: "ablation_no_climate"
+overrides:
+  encoder:
+    modality_dims:
+      climate: 0
+  forcing:
+    use_environmental: false

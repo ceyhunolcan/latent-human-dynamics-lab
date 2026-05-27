@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+.eggs/
+*.egg-info/
+*.egg
+build/
+dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Data — keep .gitkeep, ignore everything else
+data/raw/*
+data/synthetic/*
+data/processed/*
+!data/raw/.gitkeep
+!data/synthetic/.gitkeep
+!data/processed/.gitkeep
+
+# Model checkpoints and outputs
+results/figures/*
+results/tables/*
+results/checkpoints/*
+!results/figures/.gitkeep
+!results/tables/.gitkeep
+!results/checkpoints/.gitkeep
+!results/model_leaderboard.csv
+
+# Logs
+*.log
+logs/
+
+# Streamlit
+.streamlit/secrets.toml

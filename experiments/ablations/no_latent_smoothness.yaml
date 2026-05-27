@@ -1,0 +1,8 @@
+# Ablation: drop the smoothness regularizer on Z_{t+1} - Z_t. Used to
+# show that latent trajectories become unstable / less interpretable
+# without the smoothness prior.
+base: "configs/default.yaml"
+experiment: "ablation_no_latent_smoothness"
+overrides:
+  losses:
+    smoothness_weight: 0.0

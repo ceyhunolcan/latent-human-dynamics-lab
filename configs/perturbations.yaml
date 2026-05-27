@@ -1,0 +1,47 @@
+# Defaults for the counterfactual perturbation engine.
+
+perturbations:
+  sleep_extension:
+    target: "sleep_duration"
+    magnitude_min: 30        # minutes
+    magnitude_max: 120
+    default: 45
+  screen_reduction:
+    target: "screen_time_minutes"
+    magnitude_min: 30
+    magnitude_max: 180
+    default: 60
+  exercise_boost:
+    target: "active_minutes"
+    magnitude_min: 10
+    magnitude_max: 60
+    default: 30
+  cooling:
+    target: "nighttime_temperature_c"
+    magnitude_min: -8.0
+    magnitude_max: -1.0
+    default: -4.0
+  air_quality_improvement:
+    target: "aqi"
+    magnitude_min: -100
+    magnitude_max: -10
+    default: -40
+  heat_wave_shock:
+    target: "temperature_c"
+    magnitude_min: 2.0
+    magnitude_max: 10.0
+    default: 6.0
+  combined_resilience_protocol:
+    components:
+      - sleep_extension
+      - exercise_boost
+      - cooling
+    default: 1.0             # dimensionless "protocol units"; matches code
+
+horizons:
+  default_days: 14
+  min_days: 3
+  max_days: 30
+
+uncertainty:
+  n_montecarlo_runs: 30

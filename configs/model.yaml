@@ -1,0 +1,36 @@
+# Latent encoder + downstream heads.
+
+encoder:
+  modality_dims:
+    wearable: 12
+    behavioral: 8
+    climate: 6
+    missingness: 5
+    baseline: 8
+  proj_dim: 32
+  temporal: "gru"        # one of: gru, transformer
+  hidden_dim: 64
+  n_layers: 2
+  dropout: 0.1
+  latent_dim: 6
+
+losses:
+  reconstruction_weight: 1.0
+  next_state_weight: 0.5
+  smoothness_weight: 0.1
+  contrastive_weight: 0.05
+  disentanglement_weight: 0.01
+
+uncertainty:
+  type: "mc_dropout"     # mc_dropout | ensemble
+  n_samples: 20
+  ensemble_size: 5
+
+training:
+  batch_size: 64
+  epochs: 20
+  lr: 1.0e-3
+  weight_decay: 1.0e-5
+  grad_clip: 1.0
+  val_frac: 0.2
+  early_stopping_patience: 5

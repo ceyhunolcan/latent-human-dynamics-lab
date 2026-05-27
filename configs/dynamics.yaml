@@ -1,0 +1,22 @@
+# Dynamics model: transition function and forcing.
+
+transition:
+  type: "gru"            # gru | neural_ode
+  hidden_dim: 64
+  n_layers: 2
+  ode_step_size: 1.0     # days, used only if type == neural_ode
+
+forcing:
+  use_environmental: true
+  use_behavioral: true
+  use_perturbation: true
+  epl_weights:
+    daytime_heat: 0.30
+    nighttime_heat: 0.30
+    aqi: 0.25
+    heatwave: 0.15           # matches EPL_DEFAULT_WEIGHTS key
+
+resilience:
+  base_half_life_days: 4.0
+  vulnerability_scale: 0.5
+  noise_sigma: 0.01            # matches LatentDynamicsModel default and paper σ

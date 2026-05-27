@@ -1,0 +1,29 @@
+# Default configuration for the full pipeline.
+# All paths are relative to the repository root.
+
+seed: 17
+
+paths:
+  data_raw: "data/raw"
+  data_synthetic: "data/synthetic"
+  data_processed: "data/processed"
+  results_figures: "results/figures"
+  results_tables: "results/tables"
+  results_checkpoints: "results/checkpoints"
+  cohort_csv: "data/synthetic/synthetic_cohort.csv"
+  processed_csv: "data/processed/processed_features.csv"
+  leaderboard_csv: "results/model_leaderboard.csv"
+
+cohort:
+  n_participants: 500
+  n_days: 180
+  start_date: "2024-01-01"
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s | %(levelname)-7s | %(name)s | %(message)s"
+
+safety:
+  disclaimer: >
+    Research prototype only. Not medical advice, diagnosis, treatment, or a medical device.
+  sanitize_outputs: true

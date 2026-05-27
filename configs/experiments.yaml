@@ -1,0 +1,45 @@
+# High-level experiment definitions.
+
+experiments:
+  baseline:
+    description: "Full multimodal encoder + dynamics + forcing"
+    encoder: "configs/model.yaml"
+    dynamics: "configs/dynamics.yaml"
+
+  ablation_no_climate:
+    description: "Drop climate modality from encoder input"
+    overrides:
+      encoder.modality_dims.climate: 0
+      forcing.use_environmental: false
+
+  ablation_no_missingness:
+    description: "Drop missingness modality and pressure feature"
+    overrides:
+      encoder.modality_dims.missingness: 0
+
+  ablation_no_personal_baseline:
+    description: "Disable within-person baseline conditioning"
+    overrides:
+      encoder.modality_dims.baseline: 0
+
+  ablation_no_uncertainty:
+    description: "Single forward pass, point predictions"
+    overrides:
+      uncertainty.n_samples: 1
+
+evaluation:
+  metrics:
+    - mae
+    - rmse
+    - auroc
+    - auprc
+    - f1
+    - calibration_error
+  subgroups:
+    - sex
+    - chronotype
+    - climate_vulnerability_quartile
+  robustness:
+    - missingness_stress
+    - heatwave_shift
+    - ood_environmental

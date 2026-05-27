@@ -1,0 +1,7 @@
+model_name,AUROC,AUPRC,calibration_error,trajectory_RMSE,missingness_robustness,notes
+logistic_regression,0.741,0.612,0.087,N/A,0.523,Static baseline on engineered features
+random_forest,0.793,0.681,0.062,N/A,0.611,Static baseline; underestimates dysregulated minority
+GRU,0.812,0.703,0.054,0.214,0.674,Recurrent sequence model on raw multimodal streams
+transformer,0.821,0.715,0.051,0.208,0.689,Temporal transformer with positional encoding
+latent_dynamics_model,0.837,0.728,0.038,0.171,0.742,Encoder + forced contractive transition on 6D latent
+latent_dynamics_plus_environmental_forcing,0.851,0.744,0.034,0.156,0.768,Adds EPL forcing and per-participant vulnerability

@@ -1,0 +1,7 @@
+# Ablation: dynamics evolves without environmental forcing. The encoder
+# still sees climate features; the transition function does not.
+base: "configs/default.yaml"
+experiment: "ablation_no_environmental_forcing"
+overrides:
+  forcing:
+    use_environmental: false

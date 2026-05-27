@@ -1,0 +1,8 @@
+# Ablation: hide missingness-pressure feature and the missingness modality.
+# Tests whether modeling state-dependent dropout improves trajectory inference.
+base: "configs/default.yaml"
+experiment: "ablation_no_missingness"
+overrides:
+  encoder:
+    modality_dims:
+      missingness: 0
