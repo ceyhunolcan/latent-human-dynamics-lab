@@ -1,5 +1,13 @@
 # latent-human-dynamics-lab
 
+![CI](https://github.com/ceyhunolcan/latent-human-dynamics-lab/actions/workflows/ci.yml/badge.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue.svg)
+![Research](https://img.shields.io/badge/status-research%20prototype-orange.svg)
+![Non-clinical](https://img.shields.io/badge/non--clinical-%E2%9C%93-red.svg)
+![Last commit](https://img.shields.io/github/last-commit/ceyhunolcan/latent-human-dynamics-lab)
+![Repo size](https://img.shields.io/github/repo-size/ceyhunolcan/latent-human-dynamics-lab)
+
 A multimodal state-space engine for modeling physiological, behavioral, and environmental dynamics in human passive-sensing data.
 
 > Research prototype. Not a medical device, not for diagnosis or treatment.
@@ -350,66 +358,6 @@ Latent trajectories from a sample of participants, colored by the regime detecto
 ### Energy landscape
 
 Two-dimensional projection of the latent energy landscape ($E = -\log p$) estimated by KDE on the cohort. Basins are low-energy regions where participants spend most of their time; ridges are transition barriers between regimes.
-
-![Energy landscape](docs/figures/energy_landscape.png)
-
-### Environmental forcing response
-
-Latent-state response under high vs low environmental load (heat + AQI + heat-wave exposure), split by vulnerability tertile. Participants with higher baseline climate vulnerability respond more strongly to high-EPL days — the coupling the generator was built around.
-
-![Environmental forcing response](docs/figures/environmental_forcing_response.png)
-
-### Model leaderboard
-
-| model | AUROC | AUPRC | calibration error | trajectory RMSE | missingness robustness |
-|---|---:|---:|---:|---:|---:|
-| logistic_baseline | 0.74 | 0.61 | 0.07 | — | 0.62 |
-| random_forest | 0.81 | 0.71 | 0.09 | — | 0.68 |
-| gru_baseline | 0.85 | 0.77 | 0.08 | 1.21 | 0.74 |
-| temporal_transformer | 0.86 | 0.79 | 0.06 | 1.11 | 0.79 |
-| latent_dynamics_model (ours) | 0.88 | 0.82 | 0.04 | 0.73 | 0.83 |
-
-These numbers describe behavior on the synthetic distribution. Real-cohort performance is unknown and is the central open question (see `paper/limitations.md`).
-
-### Pipeline performance
-
-End-to-end on a 500-participant × 180-day cohort (90,000 rows):
-
-| Stage | Rows | Cols | NaN% | Duration |
-| --- | ---: | ---: | ---: | ---: |
-| generate | 0 → 90,000 | 0 → 51 | 0.0 → 3.3 | ~10s |
-| preprocess | 90,000 → 90,000 | 51 → 51 | 3.3 → 0.0 | ~1s |
-| engineer | 90,000 → 90,000 | 51 → 112 | 0.0 → 0.4 | ~2s |
-| encode | 90,000 → 90,000 | 112 → 118 | — | ~2s |
-| dynamics one-step | — | — | — | ~4s |
-
-One-step latent RMSE on held-out transitions: **0.7343**. Reproducible at seed 17.
-
-## Results
-
-These figures are regenerated end-to-end from the synthetic cohort by `make figures`. Reproducibility is at the seed level — same seed, same numbers, same plots.
-
-### Counterfactual pathways
-
-Trajectories under each of the seven canonical interventions for a single participant. Each panel shows how the six latent axes (autonomic recovery, circadian alignment, stress load, environmental burden, behavioral instability, missingness pressure) respond over a 14-day horizon. Sleep extension and cooling move autonomic recovery and stress load in the expected directions; heat-wave shock moves them the other way. The framework was built so that environmental forcing terms produce sign-correct effects, and the figure verifies that empirically.
-
-![Counterfactual pathways](docs/figures/perturbation_pathways.png)
-
-### Cohort latent state distribution
-
-The 500-participant, 180-day synthetic cohort projected onto the six named latent axes.
-
-![Cohort latent state distribution](docs/figures/cohort_latent_state_distribution.png)
-
-### Regime phase diagram
-
-Latent trajectories from a sample of participants, colored by the regime detector's assignment. The four regimes (stable, stressed, dysregulated, recovery) occupy distinct neighborhoods in latent space.
-
-![Regime phase diagram](docs/figures/regime_phase_diagram.png)
-
-### Energy landscape
-
-Two-dimensional projection of the latent energy landscape (E = -log p) estimated by KDE on the cohort. Basins are low-energy regions where participants spend most of their time; ridges are transition barriers between regimes.
 
 ![Energy landscape](docs/figures/energy_landscape.png)
 
