@@ -6,6 +6,7 @@ Skipped automatically when FastAPI / Starlette TestClient are unavailable.
 import pytest
 
 fastapi = pytest.importorskip("fastapi")
+pytest.importorskip("httpx")
 TestClient = pytest.importorskip("fastapi.testclient").TestClient
 
 
