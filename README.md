@@ -1,4 +1,7 @@
-# latent-human-dynamics-lab
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ceyhunolcan/ceyhunolcan/main/assets/repos/latent-human-dynamics-lab-dark.svg">
+  <img src="https://raw.githubusercontent.com/ceyhunolcan/ceyhunolcan/main/assets/repos/latent-human-dynamics-lab-light.svg" width="100%" alt="Latent Human Dynamics Lab">
+</picture>
 
 ![CI](https://github.com/ceyhunolcan/latent-human-dynamics-lab/actions/workflows/ci.yml/badge.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
